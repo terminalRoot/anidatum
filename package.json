@@ -1,0 +1,22 @@
+{
+  "name": "anidatum",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/terminalRoot/anidatum.git"
+  },
+  "author": "Puru",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/terminalRoot/anidatum/issues"
+  },
+  "homepage": "https://github.com/terminalRoot/anidatum#readme",
+  "dependencies": {
+    "lite-server": "^2.3.0"
+  }
+}
