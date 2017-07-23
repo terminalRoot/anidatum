@@ -1,0 +1,21 @@
+# create new ng application
+ng new adDream -dir=./adDream --style=scss
+# start the server
+ng serve
+
+#install material
+npm install --save @angular/material @angular/cdk
+
+#install ng animations
+npm install --save @angular/animations@latest
+
+# hammerjs supports gestures
+npm install --save hammerjs
+
+# flex layout
+npm install --save @angular/flex-layout@latest
+
+
+# create component
+# <<component_name>>
+ng generate component <<menu>>
