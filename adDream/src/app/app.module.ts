@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from  '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { MdToolbarModule, MdButtonModule} from "@angular/material";
+import {MdGridListModule} from "@angular/material";
 import { FlexLayoutModule } from "@angular/flex-layout";
 
 import 'hammerjs';
@@ -20,6 +21,7 @@ import { ImageComponent } from './image/image.component';
     BrowserAnimationsModule,
     MdToolbarModule,
     MdButtonModule,
+    MdGridListModule,
     FlexLayoutModule
   ],
   providers: [],

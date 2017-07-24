@@ -3,17 +3,19 @@
      fxLayoutGap="10px">
 
   <div fxFlex>
-    <div>
       <h3>images</h3>
       <hr>
-    </div>
   </div>
 
   <div fxFlex>
-    <md-grid-list cols="2" rowHeight="200px">
-      <md-grid-tile *ngFor="let image of images" colspan=1>
-        <img height="180px" src="{{image.src}}">
+    <md-grid-list cols="4" rowHeight="200px">
+      <md-grid-tile *ngFor="let image of images">
+        <img height="200px" src="{{image.src}}" alt="{{image.id}}">
+        <md-grid-tile-footer fxLayoutAlign="center">
+          <span>{{image.label}}</span>
+        </md-grid-tile-footer>
       </md-grid-tile>
     </md-grid-list>
   </div>
+
 </div>
