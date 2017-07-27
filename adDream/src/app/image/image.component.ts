@@ -1,7 +1,8 @@
 import {Component, NgModule} from '@angular/core';
 import { OnInit } from "@angular/core";
 import { Image } from "../shared/Image";
-import { IMAGES } from "../shared/images";
+
+import { ImageService } from "../services/image.service";
 
 
 @Component({
@@ -12,13 +13,15 @@ import { IMAGES } from "../shared/images";
 
 
 export class ImageComponent implements OnInit {
-  images: Image[] = IMAGES;
+  images: Image[];
   selectedImage: Image;
 
-  constructor() { }
+  constructor(private  imageService: ImageService) {
+
+  }
 
   ngOnInit() {
-
+    this.images = this.imageService.getImages();
   }
 
   onSelect(image: Image){

@@ -12,6 +12,8 @@ import { MenuComponent } from './menu/menu.component';
 import { ImageComponent } from './image/image.component';
 import { ImagedetailComponent } from './imagedetail/imagedetail.component';
 
+import { ImageService } from "./services/image.service";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +30,7 @@ import { ImagedetailComponent } from './imagedetail/imagedetail.component';
     MdCardModule,
     FlexLayoutModule
   ],
-  providers: [],
+  providers: [ ImageService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
