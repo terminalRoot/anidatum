@@ -24,3 +24,7 @@ ng generate component <<menu>>
 # create a service
 ng generate service <<services/image>>
 
+
+
+#install awesome font
+npm install font-awesome --save

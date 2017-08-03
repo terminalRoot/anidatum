@@ -13,13 +13,17 @@ import { ImageComponent } from './image/image.component';
 import { ImagedetailComponent } from './imagedetail/imagedetail.component';
 
 import { ImageService } from "./services/image.service";
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
     ImageComponent,
-    ImagedetailComponent
+    ImagedetailComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
