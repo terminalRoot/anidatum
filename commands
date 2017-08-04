@@ -15,16 +15,17 @@ npm install --save hammerjs
 # flex layout
 npm install --save @angular/flex-layout@latest
 
-
 # create component
 # <<component_name>>
 ng generate component <<menu>>
 
-
 # create a service
 ng generate service <<services/image>>
 
-
-
 #install awesome font
 npm install font-awesome --save
+
+# create a module
+# should add manually the modules to be available in app.module.ts
+# define routes in a file routes.ts (app-routing/)
+ng g module app-routing

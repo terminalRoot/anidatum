@@ -11,10 +11,14 @@ import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
 import { ImageComponent } from './image/image.component';
 import { ImagedetailComponent } from './imagedetail/imagedetail.component';
-
-import { ImageService } from "./services/image.service";
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { HomeComponent } from './home/home.component';
+import { AudioComponent } from './audio/audio.component';
+import { MovieComponent } from './movie/movie.component';
+
+import { ImageService } from "./services/image.service";
+import { AppRoutingModule } from "./app-routing/app-routing.module";
 
 @NgModule({
   declarations: [
@@ -23,7 +27,10 @@ import { FooterComponent } from './footer/footer.component';
     ImageComponent,
     ImagedetailComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    HomeComponent,
+    AudioComponent,
+    MovieComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +39,8 @@ import { FooterComponent } from './footer/footer.component';
     MdButtonModule,
     MdGridListModule,
     MdCardModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    AppRoutingModule
   ],
   providers: [ ImageService ],
   bootstrap: [AppComponent]
