@@ -3,6 +3,7 @@ import { OnInit } from "@angular/core";
 import { Image } from "../shared/Image";
 
 import { ImageService } from "../services/image.service";
+import {MdDialog} from "@angular/material";
 
 
 @Component({
@@ -21,7 +22,7 @@ export class ImageComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.images = this.imageService.getImages();
+    this.imageService.getImages().subscribe(images => this.images = images);
   }
 
   onSelect(image: Image){

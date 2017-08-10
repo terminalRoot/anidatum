@@ -1,0 +1,43 @@
+<div class="container"
+     fxLayout="row"
+     fxLayoutGap="10px"
+     layout-align="end">
+    <!--fxLayout.sm="column"-->
+    <!--fxLayout.xs="column"-->
+    <!--fxLayoutAlign.gt-md="space-around center"-->
+    <!--fxLayoutGap="10px"-->
+    <!--fxLayoutGap.xs="0">-->
+    <div id="toolbox" fxFlex="20%" [hidden]="!editingMode">
+        <app-toolbox></app-toolbox>
+    </div>
+
+    <div fxFlex="50%" fxLayout="column">
+        <div id="image-detail" fxLayout="column">
+            <app-imagedetail></app-imagedetail>
+            <div fxLayout="row">
+                <button md-button [routerLink]="['/annotator', prev]">
+                    <span class="fa fa-chevron-left fa-lg"></span>
+                </button>
+                <button md-button [routerLink]="['/annotator', next]">
+                    <span class="fa fa-chevron-right fa-lg"></span>
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <div fx-layout-align="end" style="float:right;">
+        <md-toolbar color="primary">
+            <span class="fill-space"></span>
+
+            <button md-button>Submit</button>
+            <button class="background-primary text-floral-white" *ngIf="!editingMode" md-button
+                    (click)="editingMode=true">Draw
+            </button>
+            <button class="background-primary text-floral-white" *ngIf="editingMode" md-button
+                    (click)="editingMode=false">Cancel
+            </button>
+        </md-toolbar>
+
+    </div>
+</div>

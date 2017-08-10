@@ -9,7 +9,7 @@
 
   <div fxFlex>
     <md-grid-list cols="4" rowHeight="200px">
-      <md-grid-tile *ngFor="let image of images" (click)="onSelect(image)">
+      <md-grid-tile *ngFor="let image of images" (click)="onSelect(image)" [routerLink]="['/annotator', image.id]">
         <img height="200px" src="{{image.src}}" alt="{{image.id}}">
         <md-grid-tile-footer fxLayoutAlign="center">
           <span>{{image.label}}</span>
@@ -17,7 +17,5 @@
       </md-grid-tile>
     </md-grid-list>
   </div>
-
-  <app-imagedetail [image]="selectedImage"></app-imagedetail>
 
 </div>

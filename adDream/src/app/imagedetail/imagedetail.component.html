@@ -1,33 +1,31 @@
 <div class="container"
      fxLayout="row"
      fxLayout.sm="column"
-     fxLayout.xs="column"
-     fxLayoutAlign.gt-md="space-around center"
-     fxLayoutGap="10px"
-     fxLayoutGap.xs="0">
+     fxLayoutGap="100px"
+     layout-fill
+     layout-align="right">
+     <!--fxLayoutAlign.gt-md="space-around center">-->
+     <!--fxLayoutGap="10px"-->
+     <!--fxLayoutGap.xs="0">-->
 
-  <div fxFlex="50" *ngIf="image">
-    <md-card>
-      <md-card-header>
-        <md-card-title>
-          {{image.id}}
-        </md-card-title>
-      </md-card-header>
-      <img src="{{image.src}}" width="100%">
-    </md-card>
-  </div>
-
-
-  <div fxFlex="30">
-    <md-list *ngIf="image ">
-      <h3>Labels</h3>
-      <md-list-item>
-        <p md-line>{{image.label}}</p>
-      </md-list-item>
-          <button md-button>Submit</button>
-          <button md-button>Draw</button>
-    </md-list>
-  </div>
-
-
+    <div *ngIf="image">
+        <div fxFlex="50%">
+            <md-card>
+                <md-card-header>
+                    <md-card-title>
+                        {{image.id}}
+                    </md-card-title>
+                </md-card-header>
+                <img src="{{image.src}}" style="max-height:80%; max-width:100%;">
+            </md-card>
+        </div>
+        <div>
+            <md-list *ngIf="image">
+                <h3>Labels</h3>
+                <md-list-item>
+                    <p md-line>{{image.label}}</p>
+                </md-list-item>
+            </md-list>
+        </div>
+    </div>
 </div>
