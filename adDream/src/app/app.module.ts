@@ -19,6 +19,8 @@ import { MovieComponent } from './movie/movie.component';
 
 import { ImageService } from "./services/image.service";
 import { AppRoutingModule } from "./app-routing/app-routing.module";
+import { AnnotatorComponent } from './annotator/annotator.component';
+import { ToolboxComponent } from './toolbox/toolbox.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { AppRoutingModule } from "./app-routing/app-routing.module";
     FooterComponent,
     HomeComponent,
     AudioComponent,
-    MovieComponent
+    MovieComponent,
+    AnnotatorComponent,
+    ToolboxComponent
   ],
   imports: [
     BrowserModule,
@@ -43,6 +47,7 @@ import { AppRoutingModule } from "./app-routing/app-routing.module";
     AppRoutingModule
   ],
   providers: [ ImageService ],
+  entryComponents: [AnnotatorComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
