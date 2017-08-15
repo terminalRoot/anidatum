@@ -33,7 +33,8 @@ export class AnnotatorComponent implements OnInit {
   }
 
   private drawImage2() {
-    drawCanvas();
+    console.log("In drawImage2: ", this.image.src)
+    drawCanvas(this.image.src);
   }
 
   private setPrevNext() {

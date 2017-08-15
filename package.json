@@ -20,5 +20,8 @@
   "homepage": "https://github.com/terminalRoot/anidatum#readme",
   "dependencies": {
     "lite-server": "^2.3.0"
+  },
+  "devDependencies": {
+    "@angular/cli": "^1.2.7"
   }
 }
