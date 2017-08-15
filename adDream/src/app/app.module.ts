@@ -44,7 +44,7 @@ import { ToolboxComponent } from './toolbox/toolbox.component';
     MdGridListModule,
     MdCardModule,
     FlexLayoutModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [ ImageService ],
   entryComponents: [AnnotatorComponent],

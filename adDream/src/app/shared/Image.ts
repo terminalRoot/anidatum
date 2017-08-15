@@ -1,5 +1,5 @@
 
-export class Image{
+export class ImageDO{
   id: number;
   src: string;
   label: string;

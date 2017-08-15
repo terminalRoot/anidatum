@@ -26,7 +26,7 @@ export const routes: Routes = [
     path: '', redirectTo: '/home', pathMatch: 'full'
   },
   {
-    path: 'annotator/:id', component: AnnotatorComponent
+    path: 'images/:id', component: AnnotatorComponent
   }
 ];
 

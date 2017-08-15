@@ -1,6 +1,6 @@
-import { Image } from "./Image";
+import { ImageDO } from "./Image";
 
-export  const IMAGES: Image[] = [
+export  const IMAGES: ImageDO[] = [
   {
     id: 1,
     src: "https://cdn-2.jjshouse.com/upimg/jjshouse/s1140/ba/94/e7c2dcaf8570feee410d694a51a8ba94.jpg",

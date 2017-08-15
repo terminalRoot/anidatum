@@ -1,38 +1,49 @@
 <div class="container"
      fxLayout="row"
      fxLayoutGap="10px"
-     layout-align="end">
-    <!--fxLayout.sm="column"-->
-    <!--fxLayout.xs="column"-->
-    <!--fxLayoutAlign.gt-md="space-around center"-->
-    <!--fxLayoutGap="10px"-->
-    <!--fxLayoutGap.xs="0">-->
-    <div id="toolbox" fxFlex="20%" [hidden]="!editingMode">
-        <app-toolbox></app-toolbox>
+     layout-align="end"
+     style="min-height: 600px;">
+
+    <div id="toolbox" fxFlex="20%">
+        <div>
+            Main toolbox hun
+            <img style="max-height:100%; max-width:100%;"
+                 src="https://s-media-cache-ak0.pinimg.com/736x/2c/52/e6/2c52e6af6a04a818af44b388b9b4f2d6--cereal-box-crafts-cereal-boxes.jpg">
+        </div>
     </div>
 
-    <div fxFlex="50%" fxLayout="column">
-        <div id="image-detail" fxLayout="column">
-            <app-imagedetail></app-imagedetail>
-            <div fxLayout="row">
-                <button md-button [routerLink]="['/annotator', prev]">
-                    <span class="fa fa-chevron-left fa-lg"></span>
-                </button>
-                <button md-button [routerLink]="['/annotator', next]">
-                    <span class="fa fa-chevron-right fa-lg"></span>
-                </button>
-            </div>
+    <div fxFlex="40%" fxLayout="column">
+        <div id="img_div" fxLayout="column" fxFlex="90%">
+
+            <!--<img src="{{image.src}}" style="height:725px;max-width:500px">-->
+        </div>
+        <div fxLayout="row" fxFlex="10%">
+            <button md-button [routerLink]="['/images', prev]">
+                <span class="fa fa-chevron-left fa-lg"></span>
+            </button>
+            <button md-button [routerLink]="['/images', next]">
+                <span class="fa fa-chevron-right fa-lg"></span>
+            </button>
         </div>
 
     </div>
+    <div fxFlex="20%">
+        <md-list *ngIf="image">
+            <h3>Labels</h3>
+            <md-list-item>
+                <p md-line>{{image.label}}</p>
+            </md-list-item>
+        </md-list>
+    </div>
 
-    <div fx-layout-align="end" style="float:right;">
+
+    <div fx-layout-align="end" style="float:right;" fxFlex="20%">
         <md-toolbar color="primary">
             <span class="fill-space"></span>
 
             <button md-button>Submit</button>
             <button class="background-primary text-floral-white" *ngIf="!editingMode" md-button
-                    (click)="editingMode=true">Draw
+                    (click)="editingMode=true" (click)="drawImage2">Draw
             </button>
             <button class="background-primary text-floral-white" *ngIf="editingMode" md-button
                     (click)="editingMode=false">Cancel
