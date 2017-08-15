@@ -1,6 +1,8 @@
 import {Component, OnInit} from "@angular/core";
 import {ImageService} from "../services/image.service";
 import {ActivatedRoute, Params} from "@angular/router";
+import {ImageDO} from "../shared/Image";
+import {drawCanvas} from './label';
 
 
 @Component({
@@ -9,6 +11,7 @@ import {ActivatedRoute, Params} from "@angular/router";
   styleUrls: ['./annotator.component.scss']
 })
 export class AnnotatorComponent implements OnInit {
+  image: ImageDO;
   imageId: number;
   imageIds: number[];
   prev: number;
@@ -23,8 +26,14 @@ export class AnnotatorComponent implements OnInit {
     this.imageService.getImages().subscribe(images => this.imageIds = images.map(image => image.id));
     this.route.params.switchMap((params: Params) => this.imageService.getImage(+params['id'])).subscribe(image => {
       this.imageId = image.id;
+      this.image = image;
       this.setPrevNext();
+      this.drawImage2();
     });
+  }
+
+  private drawImage2() {
+    drawCanvas();
   }
 
   private setPrevNext() {
@@ -34,8 +43,6 @@ export class AnnotatorComponent implements OnInit {
   }
 
   mod(n: number, m: number): number {
-    let mod = ((n % m) + m) % m;
-    return mod;
+    return ((n % m) + m) % m;
   }
-
 }

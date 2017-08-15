@@ -1,6 +1,6 @@
 import {Component, NgModule} from '@angular/core';
 import { OnInit } from "@angular/core";
-import { Image } from "../shared/Image";
+import { ImageDO } from "../shared/Image";
 
 import { ImageService } from "../services/image.service";
 import {MdDialog} from "@angular/material";
@@ -14,8 +14,8 @@ import {MdDialog} from "@angular/material";
 
 
 export class ImageComponent implements OnInit {
-  images: Image[];
-  selectedImage: Image;
+  images: ImageDO[];
+  selectedImage: ImageDO;
 
   constructor(private  imageService: ImageService) {
 
@@ -25,7 +25,7 @@ export class ImageComponent implements OnInit {
     this.imageService.getImages().subscribe(images => this.images = images);
   }
 
-  onSelect(image: Image){
+  onSelect(image: ImageDO){
     this.selectedImage = image;
   }
 
