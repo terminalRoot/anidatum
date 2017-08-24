@@ -4,7 +4,7 @@
      layout-align="end"
      style="min-height: 600px;">
 
-    <div id="toolbox" fxFlex="20%">
+    <div id="toolbox" fxFlex="20%" ng-class="{'vis-hidden': editingMode==true}">
         <div>
             Main toolbox hun
             <img style="max-height:100%; max-width:100%;"
@@ -41,12 +41,13 @@
         <md-toolbar color="primary">
             <span class="fill-space"></span>
 
-            <button md-button>Submit</button>
+            <button md-button *ngIf="editingMode" (click)="clearCanvas()">Clear</button>
+            <button md-button (click)="submitAnnotation()">Submit</button>
             <button class="background-primary text-floral-white" *ngIf="!editingMode" md-button
-                    (click)="editingMode=true" (click)="drawImage2">Draw
+                    (click)="activateEditingMode()">Draw
             </button>
             <button class="background-primary text-floral-white" *ngIf="editingMode" md-button
-                    (click)="editingMode=false">Cancel
+                    (click)="deactivateEditingMode()">Cancel
             </button>
         </md-toolbar>
 

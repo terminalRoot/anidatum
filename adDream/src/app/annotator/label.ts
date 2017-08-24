@@ -132,7 +132,22 @@ function createCanvas(width: number, height: number) {
   return canvas;
 }
 
-export var drawCanvas = function (image_src) {
+export function removeCanvas(){
+  let img_div = <HTMLElement>document.getElementById('img_div');
+  if (document.getElementById('img_canvas')) {
+    let existing_canvas = document.getElementById('img_canvas');
+    img_div.removeChild(existing_canvas);
+  }
+  return;
+}
+
+export function clearCanvasX(){
+  let canvas = <HTMLCanvasElement>document.getElementById('img_canvas');
+  var context = canvas.getContext('2d');
+  context.clearRect(0, 0, canvas.width, canvas.height);
+}
+
+export var drawCanvas = function () {
   let img_div = <HTMLElement>document.getElementById('img_div');
   var width = img_div.offsetWidth;
   var height = img_div.offsetHeight;
@@ -161,6 +176,7 @@ export var drawCanvas = function (image_src) {
   canvas.addEventListener("mousemove", function (evt) {
     mouseXY(evt, this, curve);
   }, false);
+  return curve;
 };
 
 //https://jsfiddle.net/z2ngg62k/8/
