@@ -1,32 +1,21 @@
 /**
  * Created by shashwat on 14/08/17.
  */
-// var getMousePos = function(_canvas, evt) {
-//   var rect = _canvas.getBoundingClientRect();
-//   return {
-//     x: parseInt((evt.clientX - rect.left) / (rect.right - rect.left) * _canvas.width),
-//     y: parseInt((evt.clientY - rect.top) / (rect.bottom - rect.top) * _canvas.height)
-//   };
-// };
 import {Curve} from './curve';
-
-function getMousePos2(canvas, evt) {
-  var rect = canvas.getBoundingClientRect();
+var getMousePos = function (_canvas, evt) {
+  var rect = _canvas.getBoundingClientRect();
   return {
-    x: evt.clientX - rect.left,
-    y: evt.clientY - rect.top
+    x: ((evt.clientX - rect.left) / (rect.right - rect.left) * _canvas.width),
+    y: ((evt.clientY - rect.top) / (rect.bottom - rect.top) * _canvas.height)
   };
-}
+};
 
 var mouseXY = function (evt, canvas, curve) {
-  var pos = getMousePos2(canvas, evt);
+  var pos = getMousePos(canvas, evt);
   var path = curve.path();
-  // console.log("pos: ", pos);
-  // console.log("path: ", path);
 
   if (canvas.getContext && curve.follower()) {
     var cp = curve.currentPath();
-    // console.log("cp: ", cp);
     var ctx = canvas.getContext('2d');
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.lineWidth = 2;
@@ -72,7 +61,7 @@ var mouseXY = function (evt, canvas, curve) {
 var mouseDown = function (evt, canvas, curve) {
   if (evt.buttons == 1) {
     curve.setFollower(true);
-    var pos = getMousePos2(canvas, evt);
+    var pos = getMousePos(canvas, evt);
     curve.append([pos.x, pos.y]);
 
     // draw current point
@@ -121,55 +110,73 @@ var mouseDown = function (evt, canvas, curve) {
   }
 };
 
+// TODO: Remove this after 2 months. Today: 24/8
 function drawImage(image_src: string, ctx, height, width) {
   let image = new Image();
   image.src = image_src;
-  console.log("drawing image");
   window.onload = function () {
     ctx.drawImage(image, 0, 0, width, height);
   };
 }
-export var drawCanvas = function (image_src) {
-  let img_div = <HTMLElement>document.getElementById('img_div');
-  var width = img_div.clientWidth;
-  var height = img_div.clientHeight;
 
+function createCanvas(width: number, height: number) {
   var canvas = document.createElement('canvas');
   canvas.id = 'img_canvas';
   canvas.width = width;
   canvas.height = height;
-  // canvas.style.height="100%";
-  // canvas.style.width="100%"
-  // canvas.style.position = 'absolute';
-  // canvas.style.left = "0px";
-  // canvas.style.top = "0px";
-  if (!document.getElementById('img_canvas')) {
-    console.log("no image_div found");
-    img_div.appendChild(canvas);
+  canvas.style.position = 'absolute';
+  canvas.style.left = "0";
+  canvas.style.top = "0";
+  canvas.style.height = "100%";
+  canvas.style.width = "100%";
+  return canvas;
+}
+
+export function removeCanvas(){
+  let img_div = <HTMLElement>document.getElementById('img_div');
+  if (document.getElementById('img_canvas')) {
+    let existing_canvas = document.getElementById('img_canvas');
+    img_div.removeChild(existing_canvas);
   }
+  return;
+}
+
+export function clearCanvasX(){
+  let canvas = <HTMLCanvasElement>document.getElementById('img_canvas');
+  var context = canvas.getContext('2d');
+  context.clearRect(0, 0, canvas.width, canvas.height);
+}
+
+export var drawCanvas = function () {
+  let img_div = <HTMLElement>document.getElementById('img_div');
+  var width = img_div.offsetWidth;
+  var height = img_div.offsetHeight;
+  img_div.style.position = "relative";
+  var canvas = createCanvas(width, height);
+
+  // redraw canvas
+  if (document.getElementById('img_canvas')) {
+    let existing_canvas = document.getElementById('img_canvas');
+    img_div.removeChild(existing_canvas);
+  }
+  img_div.appendChild(canvas);
 
   var ctx = canvas.getContext("2d");
-
-  console.log("clearing image")
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-  drawImage(image_src, ctx, height, width);
-
   ctx.globalAlpha = 0.5;
-
   var curve = new Curve();
   curve.setCanvas(canvas);
 
-  canvas.addEventListener("mousedown",  function(evt){
+  canvas.addEventListener("mousedown", function (evt) {
     evt.preventDefault();
     evt.stopPropagation();
     document.addEventListener('contextmenu', event => event.preventDefault(), false);
     mouseDown(evt, this, curve);
   }, false);
 
-  canvas.addEventListener("mousemove", function(evt) {
+  canvas.addEventListener("mousemove", function (evt) {
     mouseXY(evt, this, curve);
   }, false);
+  return curve;
 };
 
 //https://jsfiddle.net/z2ngg62k/8/

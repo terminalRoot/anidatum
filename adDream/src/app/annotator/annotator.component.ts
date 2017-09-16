@@ -2,7 +2,9 @@ import {Component, OnInit} from "@angular/core";
 import {ImageService} from "../services/image.service";
 import {ActivatedRoute, Params} from "@angular/router";
 import {ImageDO} from "../shared/Image";
-import {drawCanvas} from './label';
+import {drawCanvas, removeCanvas, clearCanvasX} from './label';
+import {Observable} from "rxjs";
+import {Curve} from "./curve";
 
 
 @Component({
@@ -17,6 +19,7 @@ export class AnnotatorComponent implements OnInit {
   prev: number;
   next: number;
   editingMode: boolean = false;
+  curve: Curve;
 
   constructor(private imageService: ImageService,
               private route: ActivatedRoute) {
@@ -28,13 +31,29 @@ export class AnnotatorComponent implements OnInit {
       this.imageId = image.id;
       this.image = image;
       this.setPrevNext();
-      this.drawImage2();
+      this.deactivateEditingMode();
     });
   }
 
-  private drawImage2() {
-    console.log("In drawImage2: ", this.image.src)
-    drawCanvas(this.image.src);
+  public activateEditingMode() {
+    this.editingMode = true;
+    this.curve = drawCanvas();
+  }
+
+  public deactivateEditingMode() {
+    this.editingMode = false;
+    removeCanvas();
+  }
+
+  public clearCanvas(){
+    // TODO: This should just clear the canvas
+    removeCanvas();
+    drawCanvas();
+  }
+
+  public submitAnnotation(){
+    console.log(this.curve._path);
+    this.deactivateEditingMode();
   }
 
   private setPrevNext() {
