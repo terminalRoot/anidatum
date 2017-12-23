@@ -5,7 +5,7 @@ import {ImageDO} from "../shared/Image";
 import {drawCanvas, removeCanvas, clearCanvasX} from './label';
 import {Observable} from "rxjs";
 import {Curve} from "./curve";
-
+import 'rxjs/add/operator/switchMap';
 
 @Component({
   selector: 'app-annotator',
